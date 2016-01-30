@@ -6,12 +6,21 @@ package sneetches.Casino;
  */
 public class Casino {
 
+    private Game game;
+    private Player player;
+
     public void startGame(Player player){
+        this.player = player;
+        Game game = new Game();
+        game.play();
+
+
+
 
     }
 
     public int chooseGame() {
-        return -1;
+        return 1;
     }
 
 }
