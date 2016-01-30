@@ -5,15 +5,24 @@ package sneetches.Casino;
  */
 public class Card {
 
-    public Card(Suit suit, Value value){
+    private Suit suit;
+    private Value value;
 
+    public Card(Suit suit, Value value){
+        this.suit = suit;
+        this.value = value;
     }
 
     public Value getValue(){
-
-        Value value = new Value();
         return value;
+    }
 
+    public Suit getSuit() {
+        return suit;
+    }
+
+    public int getPoints() {
+        return value.getPoints();
     }
 
 }

@@ -8,17 +8,14 @@ import java.util.Scanner;
  */
 public class Casino {
 
-    private Game game;
-    private Player player;
 
-
-    public void startGame(Player player){
+    public void startGame() {
         Game game = new Game();
-        Game goFish = new GoFish();
+       /* Game goFish = new GoFish();
         Game war = new War();
-        Game craps = new StreetCraps();
+        Game craps = new StreetCraps();*/
 
-        switch (choice){
+        switch (game) {
             case 1:
                 Game goFish = new goFish();
                 System.out.println("You're playing go fish!");
@@ -30,14 +27,14 @@ public class Casino {
                 war.play();
                 break;
             case 3:
-                Game StreetCraps = new streetCraps();
+                Game craps = new streetCraps();
                 System.out.println("You're playing Street Craps!");
                 streetCraps.play();
                 break;
             default:
-                Game goFish = new goFish();
+                Game goFish2 = new goFish();
                 System.out.println("You didn't make a valid choice, so you're playing go fish!");
-                goFish.play();
+                goFish2.play();
                 break;
         }
     }
@@ -48,11 +45,11 @@ public class Casino {
         return choice;
     }
 
-
-
     public static void main(String[] args) {
 
-
-
+        Casino casinoGame = new Casino();
+        casinoGame.startGame();
     }
+
+}
 }
