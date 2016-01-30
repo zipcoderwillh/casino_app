@@ -1,4 +1,4 @@
-package sneetches.CasinoSpec;
+package sneetches.Casino_AppSpec;
 import org.junit.Before;
 import org.junit.Test;
 import sneetches.Casino.*;
@@ -10,8 +10,6 @@ import static org.junit.Assert.*;
 public class CasinoSpec {
 
     Casino casino;
-    //Game game;
-    Player p1;
     int gameChoice;
 
     @Before
@@ -27,11 +25,6 @@ public class CasinoSpec {
 
         assertEquals("This will fail, game choice is not expected int", 1, casino.chooseGame());
 
-    }
-
-    @Test
-    public void startGameTest(){
-        casino.startGame(p1);
 
     }
 

@@ -1,4 +1,4 @@
-package sneetches.CasinoSpec;
+package sneetches.Casino_AppSpec;
 
 import org.junit.*;
 import static org.junit.Assert.*;
