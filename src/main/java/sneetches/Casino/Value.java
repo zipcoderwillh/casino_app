@@ -29,8 +29,4 @@ public enum Value {
         return points;
     }
 
-    public int getValue(){
-        return points;
-    }
-
 }
