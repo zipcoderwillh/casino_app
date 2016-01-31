@@ -18,9 +18,17 @@ public class Deck {
         }
     }
 
+    public ArrayList<Card> getDeckList(){
+        return deck;
+    }
+
     public Card getCard(int chosenCardIndex){
         Card chosenCard = deck.get(chosenCardIndex);
         return chosenCard;
+    }
+
+    public void setDeck(ArrayList<Card> cards){
+        deck = cards;
     }
 
     public Card getRandomCard() {

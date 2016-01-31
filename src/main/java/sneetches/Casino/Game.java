@@ -23,10 +23,16 @@ public class Game {
         System.out.println(message);
     }
 
+    public ArrayList<Player> getPlayers(){
+        return players;
+    }
+
     public Player getPlayer(int i){
         Player chosenPlayer = players.get(i);
         return chosenPlayer;
     }
+
+
 
     public void play(){
 

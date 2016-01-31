@@ -31,4 +31,10 @@ public class DeckSpec {
         assertTrue(randomCard instanceof Card);
     }
 
+    @Test
+    public void deckTest(){
+        int length = deck.getDeckList().size();
+        assertEquals(52, length);
+    }
+
 }
