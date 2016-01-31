@@ -3,7 +3,7 @@ package sneetches.Casino;
 /**
  * Created by willhorton on 1/29/16.
  */
-public class StreetCraps {
+public class StreetCraps extends Game {
 
     public void play(){
 
