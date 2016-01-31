@@ -32,7 +32,7 @@ public class GoFish extends CardGame {
         human = getPlayer(1);
         human.setName("Human");
 
-        // Alternate turns until
+        // Alternate turns until deck runs out
         while(gameOver == false) {
             takeTurn(human);
             takeTurn(computer);
@@ -189,7 +189,11 @@ public class GoFish extends CardGame {
         }
     }
 
-    // Sort cards by ascending order of their point values (i.e. TWO - ACE)
+    // Sort cards by ascending order of their point values (i.e. TWO - ACE). This makes it easier to find
+    // out if a player has four of a kind in the following method (extending David's algorithm for finding duplicates
+    // from class the other day.
+    // In order to sort based on each Card's Value enum, had to implement a custom Comparator (I think).
+    // See https://docs.oracle.com/javase/tutorial/collections/interfaces/order.html
     public void sortHand(ArrayList<Card> originalList) {
         Collections.sort(originalList, new Comparator<Card>() {
             public int compare(Card o1, Card o2) {
