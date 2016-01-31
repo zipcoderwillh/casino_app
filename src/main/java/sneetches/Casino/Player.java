@@ -27,6 +27,14 @@ public class Player {
         return chosenCard;
     }
 
+    public ArrayList<Card> getHand(){
+        return hand;
+    }
+
+    public ArrayList<Card> getWinPile(){
+        return winPile;
+    }
+
     public Card getHandCard(int chosenCardIndex){
         Card chosenCard = hand.get(chosenCardIndex);
         return chosenCard;
