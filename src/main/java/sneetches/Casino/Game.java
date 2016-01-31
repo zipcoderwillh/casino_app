@@ -7,7 +7,7 @@ import java.util.ArrayList;
  */
 public class Game {
 
-    private ArrayList<Player> players = new ArrayList<Player>();
+    protected ArrayList<Player> players = new ArrayList<Player>();
 
     public Game(){
 
@@ -31,8 +31,6 @@ public class Game {
         Player chosenPlayer = players.get(i);
         return chosenPlayer;
     }
-
-
 
     public void play(){
 

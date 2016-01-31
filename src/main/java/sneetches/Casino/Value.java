@@ -5,7 +5,6 @@ package sneetches.Casino;
  */
 public enum Value {
 
-    ACE (1),
     TWO (2),
     THREE (3),
     FOUR (4),
@@ -17,7 +16,8 @@ public enum Value {
     TEN (10),
     JACK (11),
     QUEEN (12),
-    KING (13);
+    KING (13),
+    ACE (14);
 
     private final int points;
 
@@ -27,6 +27,11 @@ public enum Value {
 
     public int getPoints() {
         return points;
+    }
+
+    // Return a random card value for computer to ask for in Go Fish
+    public static Value getRandomValue() {
+        return values()[ (int)(Math.random() * values().length ) ];
     }
 
 }

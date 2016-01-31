@@ -10,6 +10,15 @@ public class Player {
 
     private ArrayList<Card> hand = new ArrayList<Card>();
     private ArrayList<Card> winPile = new ArrayList<Card>();
+    private String name;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     public Card getHandCard(Suit s,Value v){
         Card chosenCard;

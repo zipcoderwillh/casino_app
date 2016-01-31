@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class CardGame extends Game{
 
-    private Deck deck = new Deck();
+    protected Deck deck = new Deck();
 
     public CardGame(Player player){
         ArrayList<Player> players = getPlayers();

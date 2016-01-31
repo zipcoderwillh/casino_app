@@ -32,19 +32,10 @@ public class Deck {
     }
 
     public Card getRandomCard() {
-
-        Card randomCard = null;
+        // Checks to see if deck is empty (deck.size() > 0), and if so removes and returns a random card within
+        // the range of remaining cards (rand.nextInt(deck.size())). If deck is already empty, returns null.
         Random rand = new Random();
-
-        while(randomCard == null) {
-            int randomIndex = rand.nextInt(52);
-            if(deck.contains(deck.get(randomIndex))) {
-                randomCard = deck.remove(randomIndex);
-            }
-        }
-
-        return randomCard;
-
+        return deck.size() > 0 ? deck.remove(rand.nextInt(deck.size())) : null;
     }
 
 }
