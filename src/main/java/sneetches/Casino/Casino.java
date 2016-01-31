@@ -14,12 +14,12 @@ public class Casino {
         Player player = new Player();
         int playerChoice = chooseGame();
 
-        // Commented out for now because does not compile as is (GoFish, War, StreetCraps all need to be set up to take Player parameter)
+        // Commented out because GoFish, War, and StreetCraps need to be modified to take Player parameters
         /*
         switch (playerChoice) {
             case 1:
                 game = new GoFish(player);
-                System.out.println("You're playing Go Fish!");
+                System.out.println("You're playing go fish!");
                 break;
             case 2:
                 game = new War(player);
@@ -38,20 +38,21 @@ public class Casino {
 
     public int chooseGame() {
 
-        Scanner sc = new Scanner(System.in);
-        int result = 0;
+        Scanner in = new Scanner(System.in);
+        int choice = 0;
 
-        while(result == 0) {
-            System.out.println("Please choose a game. Enter 1 for Street Craps, 2 for War, or 3 for Go Fish:");
-            String input = sc.nextLine();
+        while(choice == 0) {
+            System.out.println("Please choose a game. Enter 1 for Go Fish, 2 for War, or 3 for Street Craps:");
+            String input = in.nextLine();
             if(input.matches("[1-3]")) {
-                result = Integer.parseInt(input);
+                choice = Integer.parseInt(input);
                 break;
             }
-            System.out.println("Invalid input. Only numbers 1 - 3 accepted.");
+            System.out.println("Invalid input. Only 1, 2, or 3 accepted.");
         }
 
-        return result;
+
+        return choice;
 
     }
 

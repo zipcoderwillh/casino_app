@@ -12,15 +12,23 @@ public class DeckSpec {
 
     Deck deck;
     Card card;
+    Card randomCard;
 
     @Before
     public void initialize(){
         deck = new Deck();
         card = deck.getCard(0);
+        randomCard = deck.getRandomCard();
     }
+
     @Test
     public void testGetCard() {
         assertTrue(card instanceof Card);
+    }
+
+    @Test
+    public void testGetRandomCard() {
+        assertTrue(randomCard instanceof Card);
     }
 
 }
