@@ -3,7 +3,7 @@ package sneetches.Casino;
 /**
  * Created by willhorton on 1/29/16.
  */
-public class CardGame {
+public class CardGame extends Game {
 
     public void dealHands(int number) {
 

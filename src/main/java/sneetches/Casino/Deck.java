@@ -1,6 +1,7 @@
 package sneetches.Casino;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by willhorton on 1/29/16.
@@ -20,6 +21,22 @@ public class Deck {
     public Card getCard(int chosenCardIndex){
         Card chosenCard = deck.get(chosenCardIndex);
         return chosenCard;
+    }
+
+    public Card getRandomCard() {
+
+        Card randomCard = null;
+        Random rand = new Random();
+
+        while(randomCard == null) {
+            int randomIndex = rand.nextInt(52);
+            if(deck.contains(deck.get(randomIndex))) {
+                randomCard = deck.remove(randomIndex);
+            }
+        }
+
+        return randomCard;
+
     }
 
 }
