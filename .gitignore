@@ -1,0 +1,5 @@
+# User Specific Stuff
+.idea/*
+*.xml
+.DS_Store
+target/*
