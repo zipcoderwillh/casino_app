@@ -19,14 +19,14 @@ public class CardGame extends Game{
     }
 
     public void dealHands(int number, Player player) {
-        ArrayList<Card> deck = getDeck().getDeckList();
-
+        //ArrayList<Card> deck = getDeck().getDeckList();
+        shuffle();
         for(int i = 0; i < number; i++) {
-            int size = deck.size();
+            int size = deck.getDeckList().size();
             Card tempCard = getDeck().getCard(size - 1);
             player.addHandCard(tempCard);
 
-            deck.remove(size - 1);
+            deck.getDeckList().remove(size - 1);
         }
 
     }

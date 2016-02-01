@@ -36,8 +36,8 @@ public class WarSpec {
         ArrayList<Card> humanHand = human.getHand();
         ArrayList<Card> compuHand = compu.getHand();
         war.dealDeck();
-
-        assertEquals(3,compuHand.size());
+        System.out.println(human.getHandSize());
+        assertEquals(26,compuHand.size());
     }
 
 
@@ -70,7 +70,7 @@ public class WarSpec {
 
     @Test
     public void playTest(){
-        war.dealDeck();
+
         war.play();
     }
 
