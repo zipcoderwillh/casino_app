@@ -30,19 +30,13 @@ public class War extends CardGame {
 
 
     public void dealDeck(){
-        shuffle();
-        dealHands(26, getPlayer(0));
-        dealHands(26, getPlayer(1));
-
-        /*
-        for(int j = 0; j < players.size(); j++) {
-            Player currentPlayer = getPlayer(j);
+        for(Player currentPlayer : players) {
             for(int i = 0; i < 26; i ++) {
                 Card randomCard = deck.getRandomCard();
                 currentPlayer.addHandCard(randomCard);
             }
         }
-           */
+
 
 
     }
@@ -73,12 +67,11 @@ public class War extends CardGame {
     }
 
     public void play(){
-        dealHands(26, getPlayer(0));
-        dealHands(26, getPlayer(1));
+        dealDeck();
 
-        computer = getPlayer(1);
+        computer = getPlayer(0);
         computer.setName("Computer");
-        human = getPlayer(0);
+        human = getPlayer(1);
         human.setName("Human");
 
 
@@ -88,7 +81,7 @@ public class War extends CardGame {
 
         if (affirmative == 1) {
 
-            while (!gameOver) {
+            while (!isHandEmpty(getPlayer(0))) {
                 int hTopIndex = getPlayer(0).getHandSize() - 1;
                 Card hDraw = getPlayer(0).getHandCard(hTopIndex);
                 int cTopIndex = getPlayer(1).getHandSize() - 1;
@@ -102,19 +95,11 @@ public class War extends CardGame {
                     normPlay(hDraw, cDraw);
 
                 } else {
-                    if (isHandEmpty(getPlayer(0))){
-                        break;
-                    }
                     System.out.println("It's war! 1 2 3 War!");
                     drawPlay(hDraw, cDraw);
 
                 }
-                if (isHandEmpty(getPlayer(0))){
-                    gameOver = true;
-                }
-
             }
-
 
             compareWinnings();
         }
@@ -125,37 +110,31 @@ public class War extends CardGame {
         int compareH = h.getPoints();
         int compareC = c.getPoints();
         ArrayList<Card> thePool = new ArrayList<Card>();
+        while(compareH == compareC){
+            ArrayList<Card> hWarCards = playWarCards(0);
+            ArrayList<Card> cWarCards = playWarCards(1);
+            thePool.addAll(hWarCards);
+            thePool.addAll(cWarCards);
+            int last = hWarCards.size() - 1;
+            Card hWarCard = hWarCards.get(last);
+            Card cWarCard = cWarCards.get(last);
+            compareH = hWarCard.getPoints();
+            compareC = cWarCard.getPoints();
 
 
-        while(compareH == compareC) {
-            if (!isHandEmpty(getPlayer(0))) {
-                ArrayList<Card> hWarCards = playWarCards(0);
-                ArrayList<Card> cWarCards = playWarCards(1);
-                thePool.addAll(hWarCards);
-                thePool.addAll(cWarCards);
-                int last = hWarCards.size() - 1;
-                Card hWarCard = hWarCards.get(last);
-                Card cWarCard = cWarCards.get(last);
-                compareH = hWarCard.getPoints();
-                compareC = cWarCard.getPoints();
-
-            }
-
-            if (compareH > compareC) {
+        }
+        if (compareH > compareC){
                 // when I used the variable human instead of getPlayer(0) it didn't work. why?
                 getPlayer(0).getWinPile().addAll(thePool);
 
-                System.out.println("you added  " + thePool.size() + " cards to your win-pile!!!");
-                //break;
-            } else {
+            System.out.println("you added  " + thePool.size() + " cards to your win-pile!!!");
+        } else {
 
                 getPlayer(1).getWinPile().addAll(thePool);
 
-                System.out.println("you just got SPANKED by a computer. It took " + thePool.size() / 2 + " cards from you.");
-                //break;
-            }
-
+            System.out.println("you just got SPANKED by a computer. It took " + thePool.size()/2 + " cards from you.");
         }
+
 
     }
 
@@ -174,18 +153,12 @@ public class War extends CardGame {
 
         if (hVal > cVal){
             getPlayer(0).getWinPile().addAll(thePool);
-            System.out.println("Your " + h.getValue() + " of " + h.getSuit() + " beats computer's " + c.getValue() +
-                    " of " + c.getSuit());
-            System.out.println(getPlayer(0).getName() + " is the winner! They have a win-pile of " + getPlayer(0).getWinPile().size() + " cards.");
 
         } else {
             getPlayer(1).getWinPile().addAll(thePool);
-            System.out.println("Computer's " + h.getValue() + " of " + h.getSuit() + " beats your " + c.getValue() +
-                    " of " + c.getSuit());
-            System.out.println(getPlayer(1).getName() + " is the winner! They have a win-pile of " + getPlayer(1).getWinPile().size() + " cards.");
         }
 
-
+        System.out.println(getPlayer(0).getName() + " is the winner with a win-pile of " + getPlayer(0).getWinPile().size());
 
     }
 

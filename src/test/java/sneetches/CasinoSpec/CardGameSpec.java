@@ -54,18 +54,6 @@ public class CardGameSpec {
         cardGame.shuffle();
         Card testCard2 = cardGame.getDeck().getCard(51);
         assertTrue(!(testCard1 == testCard2));
-        ArrayList<Card> cardDeck1 = cardGame.getDeck().getDeckList();
-        int deck1Size = cardDeck1.size();
-        //int deckSize = cardGame.getDeck().getDeckList().size();
-
-        System.out.println(deck1Size);
-        for (int i = 0; i < deck1Size; i++){
-
-            Suit suit = cardDeck1.get(i).getSuit();
-            Value value = cardDeck1.get(i).getValue();
-
-            System.out.println("" + suit + value);
-        }
 
 
 
