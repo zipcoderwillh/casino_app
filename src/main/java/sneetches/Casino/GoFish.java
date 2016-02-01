@@ -73,25 +73,6 @@ public class GoFish extends CardGame {
             System.out.printf("%s wins the game!\n", winner);
         }
 
-        /*
-        This doesn't work, need to figure out why or just end the game at the end.
-        String input = null;
-        while(input == null) {
-            System.out.println("**************************\nPlay again (press y or n)?");
-            input = sc.nextLine();
-            if (input.matches("^[yn]$")) {
-                if (input.equals("y")) {
-                    play();
-                } else {
-                    return;
-                }
-            }
-            System.out.println("Invalid input. Please enter y or n.");
-        }
-        */
-
-        return;
-
     }
 
     public void takeTurn(Player player) {
