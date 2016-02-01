@@ -14,13 +14,12 @@ public class Casino {
         Player player = new Player();
         int playerChoice = chooseGame();
 
-        // Commented out because GoFish, War, and StreetCraps need to be modified to take Player parameters
-        /*
         switch (playerChoice) {
             case 1:
                 game = new GoFish(player);
                 System.out.println("You're playing go fish!");
                 break;
+            /*
             case 2:
                 game = new War(player);
                 System.out.println("You're playing war!");
@@ -29,8 +28,9 @@ public class Casino {
                 game = new StreetCraps(player);
                 System.out.println("You're playing Street Craps!");
                 break;
+                */
         }
-        */
+
 
         game.play();
 

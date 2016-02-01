@@ -272,10 +272,4 @@ public class GoFish extends CardGame {
         return foundCards;
     }
 
-    public static void main(String[] args) {
-        Player humanPlayer = new Player();
-        GoFish testGame = new GoFish(humanPlayer);
-        testGame.play();
-    }
-
 }
