@@ -122,53 +122,41 @@ public class War extends CardGame {
     }
 
     public void drawPlay(Card h, Card c){
-        if (!isHandEmpty(getPlayer(0))) {
-            Card compareH = h;
-            Card compareC = c;
-            int hCardPoints;
-            int cCardPoints;
-            ArrayList<Card> thePool = new ArrayList<Card>();
-            ArrayList<Card> hWarCards;
-            ArrayList<Card> cWarCards;
-            int last;
-            Card hWarCard;
-            Card cWarCard;
+        int compareH = h.getPoints();
+        int compareC = c.getPoints();
+        ArrayList<Card> thePool = new ArrayList<Card>();
 
 
-            while (compareH == compareC) {
-
-                hWarCards = playWarCards(0);
-                cWarCards = playWarCards(1);
+        while(compareH == compareC) {
+            if (!isHandEmpty(getPlayer(0))) {
+                ArrayList<Card> hWarCards = playWarCards(0);
+                ArrayList<Card> cWarCards = playWarCards(1);
                 thePool.addAll(hWarCards);
                 thePool.addAll(cWarCards);
-                last = hWarCards.size() - 1;
-                hWarCard = hWarCards.get(last);
-                cWarCard = cWarCards.get(last);
-                compareH = hWarCard;
-                compareC = cWarCard;
-                hCardPoints = compareH.getPoints();
-                cCardPoints = compareC.getPoints();
-
-
-
-                if (hCardPoints > cCardPoints) {
-                    // when I used the variable human instead of getPlayer(0) it didn't work. why?
-                    getPlayer(0).getWinPile().addAll(thePool);
-                    System.out.println("Your " + hWarCard.getValue() + " of " + h.getSuit() + " beats computer's " + c.getValue() +
-                            " of " + c.getSuit());
-                    System.out.println("you added  " + thePool.size() + " cards to your win-pile!!!");
-                    break;
-                } else if (hCardPoints < cCardPoints) {
-                    System.out.println("Computer's " + cWarCard.getValue() + " of " + c.getSuit() + " beats your " + h.getValue() +
-                            " of " + h.getSuit());
-                    getPlayer(1).getWinPile().addAll(thePool);
-
-                    System.out.println("you just got SPANKED by a computer. It took " + thePool.size() / 2 + " cards from you.");
-                    break;
-                }
+                int last = hWarCards.size() - 1;
+                Card hWarCard = hWarCards.get(last);
+                Card cWarCard = cWarCards.get(last);
+                compareH = hWarCard.getPoints();
+                compareC = cWarCard.getPoints();
 
             }
+
+            if (compareH > compareC) {
+                // when I used the variable human instead of getPlayer(0) it didn't work. why?
+                getPlayer(0).getWinPile().addAll(thePool);
+
+                System.out.println("you added  " + thePool.size() + " cards to your win-pile!!!");
+                //break;
+            } else {
+
+                getPlayer(1).getWinPile().addAll(thePool);
+
+                System.out.println("you just got SPANKED by a computer. It took " + thePool.size() / 2 + " cards from you.");
+                //break;
+            }
+
         }
+
     }
 
 
