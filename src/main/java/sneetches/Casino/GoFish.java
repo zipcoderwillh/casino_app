@@ -44,7 +44,7 @@ public class GoFish extends CardGame {
         if(human.getWinPile().size() > 0) {
             System.out.println("Here is your win pile:");
             for(Card card : human.getWinPile()) {
-                System.out.printf("%-5s of %s\n");
+                System.out.printf("%-5s of %s\n", card.getValue(), card.getSuit());
             }
         }
         else {
@@ -52,9 +52,9 @@ public class GoFish extends CardGame {
         }
 
         if(computer.getWinPile().size() > 0) {
-            System.out.println("Here is computer's win pile:");
+            System.out.println("*******************\nHere is computer's win pile:");
             for(Card card : computer.getWinPile()) {
-                System.out.printf("%-5s of %s\n");
+                System.out.printf("%-5s of %s\n", card.getValue(), card.getSuit());
             }
         }
         else {
@@ -70,9 +70,11 @@ public class GoFish extends CardGame {
         }
         else {
             winner = human.getWinPile().size() / 4 > computer.getWinPile().size() / 4 ? "Human" : "Computer";
-            System.out.printf("%s wins the game!", winner);
+            System.out.printf("%s wins the game!\n", winner);
         }
 
+        /*
+        This doesn't work, need to figure out why or just end the game at the end.
         String input = null;
         while(input == null) {
             System.out.println("**************************\nPlay again (press y or n)?");
@@ -86,6 +88,7 @@ public class GoFish extends CardGame {
             }
             System.out.println("Invalid input. Please enter y or n.");
         }
+        */
 
         return;
 
@@ -122,7 +125,6 @@ public class GoFish extends CardGame {
             // If not human, generate a random card value and see if human has it
             input = Value.getRandomValue().toString();
             System.out.printf("Computer says: give me all your %ss\n", input);
-            pause();
             cardsFromOtherPlayer = askOtherPlayer(input, human);
         }
 
@@ -157,7 +159,8 @@ public class GoFish extends CardGame {
         // Check if player has four of a kind in hand
         ArrayList<Card> fourOfAKind = checkFourOfAKind(player.getHand());
         if(fourOfAKind.size() > 0) {
-            System.out.printf("%s collected four of a kind! The following cards have been taken from %s's hand and added to their win pile:\n", playersName, playersName);
+            System.out.println("*******************");
+            System.out.printf("%s collected four of a kind!\n*******************\nThe following cards have been taken from %s's hand and added to their win pile:\n", playersName, playersName);
             for(Card card : fourOfAKind) {
                 System.out.printf("%-5s of %s\n", card.getValue(), card.getSuit());
                 player.addWinCard(card);
@@ -224,19 +227,21 @@ public class GoFish extends CardGame {
                     tracking = true;
                     startPointer = i;
                     endPointer = i + 1;
-                } else {
+                }
+                else if (tracking) {
+                    endPointer = i + 1;
+                    if(endPointer - startPointer == 3) {
+                        result.addAll(hand.subList(startPointer, endPointer + 1));
+                        hand.removeAll(hand.subList(startPointer, endPointer + 1));
+                        break;
+                    }
+                }
+                else {
                     endPointer = i + 1;
                 }
             }
             else {
-                if(tracking && (endPointer - startPointer == 3) ) {
-                    result.addAll(hand.subList(startPointer, endPointer + 1));
-                    hand.removeAll(hand.subList(startPointer, endPointer + 1));
-                    break;
-                }
-                else {
-                    tracking = false;
-                }
+                tracking = false;
             }
         }
 
