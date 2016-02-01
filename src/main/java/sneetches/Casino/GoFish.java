@@ -18,6 +18,8 @@ public class GoFish extends CardGame {
 
     public void play(){
 
+        Game.startCardGameArt();
+
         // Deal seven cards to each player
         for(Player currentPlayer : players) {
             for(int i = 0; i < 7; i ++) {
@@ -72,6 +74,8 @@ public class GoFish extends CardGame {
             winner = human.getWinPile().size() / 4 > computer.getWinPile().size() / 4 ? "Human" : "Computer";
             System.out.printf("%s wins the game!\n", winner);
         }
+
+        Game.endGameArt();
 
     }
 

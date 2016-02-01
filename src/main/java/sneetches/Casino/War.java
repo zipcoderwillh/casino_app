@@ -73,6 +73,9 @@ public class War extends CardGame {
     }
 
     public void play(){
+
+        Game.startCardGameArt();
+
         dealHands(26, getPlayer(0));
         dealHands(26, getPlayer(1));
 
@@ -85,6 +88,7 @@ public class War extends CardGame {
 
         System.out.println("Ready to play? press 1 to start: ");
         int affirmative = sc.nextInt();
+        sc.nextLine();
 
         if (affirmative == 1) {
 
@@ -112,13 +116,24 @@ public class War extends CardGame {
                 if (isHandEmpty(getPlayer(0))){
                     gameOver = true;
                 }
-
+                pause();
             }
 
 
             compareWinnings();
         }
 
+        Game.endGameArt();
+
+    }
+
+    // Stop game until "return" is pressed to allow an actual person time to read what's going on
+    public void pause() {
+        String input = null;
+        while(input == null) {
+            System.out.println("Press <RETURN> to continue...");
+            input = sc.nextLine();
+        }
     }
 
     public void drawPlay(Card h, Card c){

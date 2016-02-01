@@ -18,6 +18,9 @@ public class StreetCraps extends Game {
     }
 
     public void play() {
+
+        Game.startStreetCrapsArt();
+
         System.out.println("Enter your name");
         String input = sc.nextLine();
 
@@ -27,8 +30,9 @@ public class StreetCraps extends Game {
         human.setName(input);
 
         if (roundOne(human) && roundOne(computer)) {
+            pause();
             roundTwo(human);
-
+            pause();
             if(human.getScore() != 2) {
                 roundTwo(computer);
             }
@@ -44,7 +48,7 @@ public class StreetCraps extends Game {
 
         else if(human.getScore() > computer.getScore())
         {
-            System.out.println("human won!");
+            System.out.println(human.getName() + " won!");
         }
         else if(computer.getScore() > human.getScore()) {
             System.out.println("computer won!");
@@ -52,6 +56,8 @@ public class StreetCraps extends Game {
         else {
             System.out.println("It's a draw!");
         }
+
+        Game.endGameArt();
 
     }
 
@@ -106,10 +112,13 @@ public class StreetCraps extends Game {
 
     }
 
-    public static void main(String[] args) {
-        Player humanPlayer = new Player();
-        StreetCraps testGame = new StreetCraps(humanPlayer);
-        testGame.play();
+    // Stop game until "return" is pressed to allow an actual person time to read what's going on
+    public void pause() {
+        String input = null;
+        while(input == null) {
+            System.out.println("Press <RETURN> to continue...");
+            input = sc.nextLine();
+        }
     }
 
 }
