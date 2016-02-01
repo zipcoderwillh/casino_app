@@ -44,6 +44,10 @@ public class Player {
         return winPile;
     }
 
+    public int getHandSize(){
+        return hand.size();
+    }
+
     public Card getHandCard(int chosenCardIndex){
         Card chosenCard = hand.get(chosenCardIndex);
         return chosenCard;

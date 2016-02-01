@@ -35,6 +35,9 @@ public class PlayerSpec {
 
     @Test
     public void addWinCardTest(){
+
+
+
         assertEquals(Suit.CLUBS, player.getWinCard(0).getSuit());
     }
 
