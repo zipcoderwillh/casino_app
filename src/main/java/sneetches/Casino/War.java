@@ -11,9 +11,9 @@ import java.util.Scanner;
 public class War extends CardGame {
 
 
-    private Player computer = getPlayer(0);
+    private Player computer = getPlayer(1);
 
-    private Player human = getPlayer(1);
+    private Player human = getPlayer(0);
     private boolean gameOver = false;
     private Scanner sc = new Scanner(System.in);
 
