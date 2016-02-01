@@ -84,7 +84,7 @@ public class War extends CardGame {
 
 
         System.out.println("Ready to play? press 1 to start: ");
-        int affirmative = 1;        //sc.nextInt();
+        int affirmative = sc.nextInt();
 
         if (affirmative == 1) {
 
