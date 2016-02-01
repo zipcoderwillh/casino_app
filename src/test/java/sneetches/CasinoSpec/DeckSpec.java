@@ -44,6 +44,11 @@ public class DeckSpec {
 
     }
 
+    @Test
+    public void shuffleTest(){
+
+    }
+
 
 
 }
